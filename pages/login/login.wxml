@@ -1,0 +1,23 @@
+<view class="container">
+    <!-- <image src="/public/static/IMG_7652.jpg"></image> -->
+    <view class="login_box">
+        <view class="login_title">
+            <text>login</text>
+        </view>
+        <form action="" class="login_form">
+            <view>
+                <text class="iconfont icon-denglu"></text>
+                <input type="text"></input>
+            </view>
+            <view>
+                <text class="iconfont icon-denglumima"></text>
+                <input type="text" password></input>
+            </view>
+            <button form-type="submit" >log on</button>
+        </form>
+    </view>
+    <view class="wx_login_button">
+        <image src="/public/static/unnamed.jpg"></image>
+    </view>
+</view>
+

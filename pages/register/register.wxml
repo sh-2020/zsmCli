@@ -1,0 +1,37 @@
+<view class="body">
+    <!-- 标题区域 -->
+    <view class="register_header">
+        <image src="/public/static/register.png"></image>
+    </view>
+    <!-- 主体 -->
+    <view class="register_body">
+        <view class="body_view">
+            <form action="" class="register_form">
+                <view class="account">
+                    <text class="font_1 iconfont icon-wode"></text>
+                    <input type="text" value="{{formDate.account}}"></input>
+                    <text class="font_2 iconfont {{register_state.account.icon_style}}" hidden="{{register_state.account.icon_show}}" ></text>
+                </view>
+                <view class="tel">
+                    <text class="font_1 iconfont icon-dianhua"></text>
+                    <input type="text"></input>
+                    <text class="font_2 iconfont {{register_state.account.icon_style}}" hidden="{{register_state.account.icon_show}}"></text>
+                </view>
+                <view class="pwd">
+                    <text class="font_1 iconfont icon-denglumima"></text>
+                    <input type="text"></input>
+                    <text class="font_2 iconfont {{register_state.account.icon_style}}" hidden="{{register_state.account.icon_show}}"></text>
+                </view>
+                <view class="newPwd">
+                    <text class="font_1 iconfont icon-denglumima"></text>
+                    <input type="text"></input>
+                    <text class="font_2 iconfont {{register_state.account.icon_style}}" hidden="{{register_state.account.icon_show}}"></text>
+                </view>
+            </form>
+            <view class="go_register">
+                <text class="iconfont icon-xiangyoujiantou"></text>
+            </view>
+        </view>
+    </view>
+</view>
+
