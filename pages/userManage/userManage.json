@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+      "view-addUser":"/pages/Components/addother/addother"
+  },
+  "navigationBarBackgroundColor":"#9fc6ff",
+  "navigationBarTitleText":"用户管理"
+}

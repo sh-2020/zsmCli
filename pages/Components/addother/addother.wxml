@@ -1,0 +1,20 @@
+<view class="addPage">
+    <form class="addFromComponents" bindsubmit="submitAddOther" bindreset="resetValue">
+        <view class="addOtherInputView">
+            <text class="iconfont icon-wode"></text>
+            <input class="addOtherInput" type="text" name="username" confirm-type="next" data-sendtype="username" bindblur="checkIsExist"></input>
+            <text class="iconfont {{inputSate1}}"></text>
+        </view>
+        <view class="addOtherInputView">
+            <text class="iconfont icon-dianhua"></text>
+            <input class="addOtherInput" type="text" name="phone" confirm-type="done" data-sendtype="phone" bindblur="checkIsExist" bindconfirm="checkIsExist"></input>
+            <text class="iconfont {{inputSate2}}"></text>
+        </view>
+        <view class="addOtherInputView">
+            <button class="addOtherButton" formType="submit">添加</button>
+        </view>
+        <view class="addOtherInputView">
+            <button class="addOtherButton" form-type="reset">重置</button>
+        </view>
+    </form>
+</view>

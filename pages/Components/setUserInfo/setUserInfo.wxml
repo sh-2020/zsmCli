@@ -1,0 +1,33 @@
+<view class="page">
+    <!-- 头像 -->
+    <view class="header">
+        <view class="header_img" bindtap="getImage">
+            <cover-image wx:if="{{userInfo.avatarUrl}}" src="{{userInfo.avatarUrl}}"></cover-image>
+        </view>
+    </view>
+    <!-- 其他信息 -->
+    <view class="form_view">
+        <form action="" class="info_form">
+            <view class="info_form_element">
+                <text>昵称</text>
+                <input name="nick_name" data-nature="nick_name" bindblur="setUserInfo" focus="{{states == 'nick_name' ? true:false}}" value="{{userInfo.nick_name}}"></input>
+            </view>
+            <view class="info_form_element">
+                <text>用户名</text>
+                <input name="username" data-nature="username" bindblur="setUserInfo" focus="{{states == 'username' ? true:false}}" value="{{userInfo.username}}"></input>
+            </view>
+            <view class="info_form_element">
+                <text>手机</text>
+                <input name="phone" data-nature="phone" bindblur="setUserInfo" value="{{userInfo.phone}}"></input>
+            </view>
+            <view class="info_form_element">
+                <text>地址</text>
+                <input name="address" data-nature="address" bindblur="setUserInfo" value="{{userInfo.province +'省'+ userInfo.city +'市'+ (userInfo.address == null ? '':userInfo.address)}}"></input>
+            </view>
+            <view class="info_form_element">
+                <text>性别</text>
+                <input name="gender" data-nature="gender" bindblur="setUserInfo" value="{{userInfo.gender}}"></input>
+            </view>
+        </form>
+    </view>
+</view>

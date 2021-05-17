@@ -1,0 +1,71 @@
+.pages{
+    height: 1334rpx;
+    width: 750rpx;
+}
+.numbox{
+    height: auto;
+    width: auto;
+}
+.numbox {
+    box-sizing: content-box;
+    height: 150rpx;
+    width: 150rpx;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, #fc00ff, #00dbde);
+}
+
+.bunbox_button{
+    height: 150rpx !important; 
+    width: 150rpx !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: rgba(0,0,0,0);
+    border-radius: 50%;
+    font-weight: 200;
+    line-height: 150rpx !important;
+    font-size: 60rpx !important;
+}
+.input_phone{
+    width: 500rpx;
+}
+.input{
+    padding-left: 70rpx;
+    box-sizing: content-box;
+    height: 100rpx;
+    border-bottom: solid #90caf9 2rpx;
+}
+.icon-dianhua{
+    font-size: 50rpx;
+    position: absolute;
+    top: 0rpx; 
+    left: 0rpx; 
+    width: 60rpx; 
+    height: 100rpx; 
+    display: block; 
+    box-sizing: border-box;
+    line-height: 100rpx;
+}
+.input_text{
+    position: absolute; 
+    left: 149rpx; 
+    top: 180rpx; 
+    width: 202rpx; 
+    height: 52rpx; 
+    display: block; 
+    box-sizing: border-box;
+}
+.goto{
+    height: 100rpx;
+    width: 100rpx;
+    border: solid 1rpx wheat;
+    border-radius: 50%;
+    position: absolute; 
+    left: 324rpx; 
+    top: 578rpx;
+}
+.goto>text{
+    font-size: 50rpx;
+    line-height: 100rpx;
+    margin-left: 25rpx;
+}

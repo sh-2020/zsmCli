@@ -1,0 +1,38 @@
+@import "/public/font/iconfont.wxss" ;
+.addPage {
+    height: 1000rpx;
+    width: 600rpx;
+    background-color: white;
+}
+.addFromComponents {
+    position: absolute;
+    height: 600rpx;
+    width: 540rpx;
+    /* background-color: #f5f5f5; */
+    left: 30rpx;
+    top: 100rpx;
+    box-sizing: content-box;
+}
+.addOtherInputView {
+    display: flex;
+    height: 100rpx;
+    width: 540rpx;
+    margin-top: 10rpx;
+    background-color: #ffbb96;
+}
+.addOtherInputView>text{
+    font-size: 70rpx ;
+    line-height: 100rpx;
+}
+.addOtherInput {
+    padding-left: 20rpx;
+    height: 100rpx;
+    width: 350rpx;
+    font-size: 30rpx;
+
+}
+.addOtherButton {
+    height: 100rpx !important;
+    width: 540rpx !important;
+    background-color: #ffbb96;
+}

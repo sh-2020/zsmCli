@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "view_setUserInfo":"/pages/Components/setUserInfo/setUserInfo"
+  },
+  "navigationStyle": "custom"
+}

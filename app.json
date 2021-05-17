@@ -1,16 +1,22 @@
 {
     "pages": [
-        "pages/register/register",
-        "pages/index/index",
         "pages/login/login",
-        "pages/logs/logs"
+        "pages/infoDetails/infoDetails",
+        "pages/pickUpInfo/pickUpInfo",
+        "pages/fuwu/fuwu",
+        "pages/myselfPage/myselfPage",
+        "pages/index/index",
+        "pages/register/register",
+        "pages/logs/logs",
+        "pages/userManage/userManage",
+        "pages/gwc/gwc"
     ],
     "subpackages": [
         {
             "root": "pages/packageA",
             "pages": [
-                "child/child",
-                "parent/parent"
+                "userManage/userManage",
+                "infoDetails/infoDetails"
             ]
         }
     ],
@@ -19,6 +25,41 @@
         "navigationBarBackgroundColor": "#fff",
         "navigationBarTextStyle": "black"
     },
+    "useExtendedLib": {
+        "kbone": true,
+        "weui": true
+    },
     "style": "v2",
-    "sitemapLocation": "sitemap.json"
+    "sitemapLocation": "sitemap.json",
+    "tabBar": {
+        "borderStyle": "white",
+        "color": "#efefee",
+        "selectedColor": "#9fc6ff",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "public/static/home.png",
+                "selectedIconPath": "public/static/homeSelect.png"
+            },
+            {
+                "pagePath": "pages/fuwu/fuwu",
+                "text": "服务",
+                "iconPath": "/public/static/fuwu-active.png",
+                "selectedIconPath": "/public/static/selectFuwuActive.png"
+            },
+            {
+                "pagePath": "pages/myselfPage/myselfPage",
+                "text": "我的",
+                "iconPath": "public/static/myself_.png",
+                "selectedIconPath": "public/static/myselfSelect.png"
+            }
+        ]
+    },
+    "plugins": {
+        "WechatSI": {
+            "version": "0.3.4",
+            "provider": "wx069ba97219f66d99"
+        }
+    }
 }

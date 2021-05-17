@@ -6,7 +6,7 @@
     "setting": {
         "urlCheck": false,
         "es6": true,
-        "enhance": false,
+        "enhance": true,
         "postcss": true,
         "preloadBackgroundData": false,
         "minified": true,
@@ -21,23 +21,26 @@
         "checkSiteMap": true,
         "uploadWithSourceMap": true,
         "compileHotReLoad": false,
-        "useMultiFrameRuntime": false,
+        "useMultiFrameRuntime": true,
         "useApiHook": true,
+        "useApiHostProcess": true,
         "babelSetting": {
             "ignore": [],
             "disablePlugins": [],
             "outputPath": ""
         },
         "enableEngineNative": false,
+        "bundle": false,
         "useIsolateContext": true,
         "useCompilerModule": true,
         "userConfirmedUseCompilerModuleSwitch": false,
+        "userConfirmedBundleSwitch": false,
         "packNpmManually": false,
         "packNpmRelationList": [],
         "minifyWXSS": true
     },
     "compileType": "miniprogram",
-    "libVersion": "2.15.0",
+    "libVersion": "2.16.0",
     "appid": "wx3d101bdd108a82ec",
     "projectname": "wx_customer",
     "debugOptions": {

@@ -4,20 +4,20 @@
         <view class="login_title">
             <text>login</text>
         </view>
-        <form action="" class="login_form">
+        <form action="" class="login_form" bindsubmit="sendLoginMessage">
             <view>
                 <text class="iconfont icon-denglu"></text>
-                <input type="text"></input>
+                <input type="text" name="username" value="{{username}}" data-name="username" bindinput="setFormData"></input>
             </view>
             <view>
                 <text class="iconfont icon-denglumima"></text>
-                <input type="text" password></input>
+                <input type="text" password name="pwd" value="{{pwd}}" data-name="pwd" bindinput="setFormData"></input>
             </view>
-            <button form-type="submit" >log on</button>
+            <button form-type="submit">log on</button>
+            <button class="regeister" bindtap="getToRegister">sign up</button>
         </form>
     </view>
-    <view class="wx_login_button">
+    <view class="wx_login_button" bindtap="wGetuserInfoAndLogin" >
         <image src="/public/static/unnamed.jpg"></image>
     </view>
 </view>
-

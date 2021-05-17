@@ -6,11 +6,11 @@ class Validate{
         this.rules = rules;
     };
     //保存自定义规则
-    #saveCustomize = []
+    saveCustomize = []
     // 内置规则
-    #rulesName = ["required", "email", "qq", "money", "url", "id", "lengthRange", "fixedLength", "payPwd", "notMatch", "match", "realname", "receiptname", "chinese", "safeAnswer", "alphanumeric", "idcard", "mobile", "phone", "areaPart", "phonePart", "year", "month", "day", "number", "notAllNum", "maxValue", "minValue", "integer", "rate", "minNumber"];
+    rulesName = ["required", "email", "qq", "money", "url", "id", "lengthRange", "fixedLength", "payPwd", "notMatch", "match", "realname", "receiptname", "chinese", "safeAnswer", "alphanumeric", "idcard", "mobile", "phone", "areaPart", "phonePart", "year", "month", "day", "number", "notAllNum", "maxValue", "minValue", "integer", "rate", "minNumber","pwd","account"];
     // 定义规则
-    #rulesMessage = {
+    rulesMessage = {
         required: {
             regex: /[^(^\s*)|(\s*$)]/,
             msg: "此项必填"
@@ -142,7 +142,17 @@ class Validate{
         minNumber: {
             regex: /^\d*(\.(\d{1,2})?)?$/,
             msg: "请输入大于等于 #0# 数字"
-        }
+        },
+         //判断密码格式是否正确 （6-16位包含字母数字_-
+         pwd:{
+            regex:/^[\w_-]{6,16}$/,
+            msg:"密码格式不正确"
+        },
+        //判断账号格式是否正确
+        account:{
+            regex:/^[-_a-zA-Z0-9]{4,16}$/,
+            msg:"账号格式不正确"
+        },
     };
     check(name,value,callback){
         if(!name) {
@@ -151,47 +161,55 @@ class Validate{
         if(!value) {
             throw new Error("Validate.check(name,value) value 不能为空")
         }
-        if(this.#saveCustomize.indexOf(name) != -1){
-            let result =  this[name](value)
-            return callback(result)
-        }
-        //创建对象量储存message值
-        let saveRulesMessage = {};
-        //创建数组保存规则
-        let saveRulesName = {};
-        for (const rules_ of this.rules){
-            if (rules_.name == name){
-                if(rules_.rules instanceof Array) {
-                    for(const rules_rules of rules_.rules){
-                        this.#saveRules(rules_rules,saveRulesMessage,saveRulesName);
+        return new Promise((resolve,reject)=>{
+            if(this.saveCustomize.indexOf(name) != -1){
+                let result =  this[name](value)
+                resolve(result)
+                return callback(result)
+            }
+            //创建对象量储存message值
+            let saveRulesMessage = {};
+            //创建数组保存规则
+            let saveRulesName = {};
+            
+            for (const rules_ of this.rules){
+                if (rules_.name == name){
+                    if(rules_.rules instanceof Array) {
+                        for(const rules_rules of rules_.rules){
+                            this.saveRules(rules_rules,saveRulesMessage,saveRulesName);
+                        }
+                    }else{
+                        this.saveRules(rules_.rules,saveRulesMessage,saveRulesName);
                     }
-                }else{
-                    this.#saveRules(rules_.rules,saveRulesMessage,saveRulesName);
                 }
             }
-        }
-        if(saveRulesName.length == 0) {
-            return
-        }
-        let result = this.#checkRegulation(saveRulesMessage,saveRulesName,value)
-        callback(result)
+            // console.log(saveRulesMessage);
+            // console.log(saveRulesName)
+            if(saveRulesName.length == 0) {
+                reject(0)
+                return
+            }
+            let result = this.checkRegulation(saveRulesMessage,saveRulesName,value)
+            resolve(result)
+            callback(result)
+        })
     };
     //保存对应规则
-    #saveRules(rulesObject,saveRulesMesObj,saveRulesNme) {
+    saveRules(rulesObject,saveRulesMesObj,saveRulesNme) {
         for (const checkRules of Object.keys(rulesObject)){
-            if (this.#rulesName.indexOf(checkRules) != -1){
+            if (this.rulesName.indexOf(checkRules) != -1){
                 saveRulesMesObj[checkRules] = rulesObject.message;
                 saveRulesNme[checkRules] = rulesObject[checkRules];
             }
         }
     };
     //验证规则
-    #checkRegulation(message,rules,value) {
+    checkRegulation(message,rules,value) {
         // console.log(rules)
         let rulesArray = Object.keys(rules)
         for (const rulesVal of rulesArray) {
-            if(this.#rulesMessage[rulesVal].regex && !this.#rulesMessage[rulesVal].num){
-                let result =  this.#checkRegular(this.#rulesMessage[rulesVal].regex,value)
+            if(this.rulesMessage[rulesVal].regex && !this.rulesMessage[rulesVal].num){
+                let result =  this.checkRegular(this.rulesMessage[rulesVal].regex,value)
                 if(result.code == 1){
                     continue
                 }
@@ -204,12 +222,12 @@ class Validate{
                     }
                     return {
                         code : false,
-                        msg : this.#rulesMessage[rulesVal].msg
+                        msg : this.rulesMessage[rulesVal].msg
                     }
                 }
             }
             if(rulesVal == "idcard"){
-                let result = this.#validatorIDCard(value)
+                let result = this.validatorIDCard(value)
                 if(result.code == 1){
                     continue
                 }
@@ -224,13 +242,13 @@ class Validate{
                     msg : result
                 } 
             }
-            if(this.#rulesMessage[rulesVal].num && !this.#rulesMessage[rulesVal].regex){
+            if(this.rulesMessage[rulesVal].num && !this.rulesMessage[rulesVal].regex){
                 // console.log(this.#rulesMessage[rulesVal].num,rulesVal)
-                let result = this.#checkNum(rules[rulesVal],value,this.#rulesMessage[rulesVal].num)
+                let result = this.checkNum(rules[rulesVal],value,this.rulesMessage[rulesVal].num)
                 console.log(result)
                 if(result.code == 1) {
-                    let mag = this.#rulesMessage[rulesVal].msg
-                    let replaceResult =  this.#replaceStr(mag,rules[rulesVal])
+                    let mag = this.rulesMessage[rulesVal].msg
+                    let replaceResult =  this.replaceStr(mag,rules[rulesVal])
                     if(message[rulesVal]){
                         return {
                             code : false,
@@ -243,7 +261,7 @@ class Validate{
                     } 
                 }
             }
-            if(this.#rulesMessage[rulesVal].flag){
+            if(this.rulesMessage[rulesVal].flag){
                 if(rulesVal== "match"){
                     if(!(value instanceof Array)) {
                         throw new Error(`在match规则下，value需要传入一个含两次输入的结果数组，validate.check(name,!!!)|->x需要-个数组`)
@@ -251,7 +269,7 @@ class Validate{
                     if(!(value.length == 2)){
                         throw new Error(`在match规则下，value需要传入一个含两次输入的结果的两个元素的数组，validate.check(name,!!!)|->x数组需要两个元素`)
                     }
-                    if(value[0]!= value[1]){
+                    if(value[0] != value[1]){
                         if(message[rulesVal]){
                             return {
                                 code : false,
@@ -260,7 +278,7 @@ class Validate{
                         }
                         return {
                             code : false,
-                            msg : this.#rulesMessage[rulesVal].msg
+                            msg : this.rulesMessage[rulesVal].msg
                         }
                     }
                 }
@@ -272,14 +290,14 @@ class Validate{
         }
     };
     //判断有正则的规则
-    #checkRegular(regex,value){
+    checkRegular(regex,value){
         if(regex){
             let result = regex.test(value)
             return {code : result ? 1:-1}
         }
     };
     //判断需要输入值的规则
-    #checkNum(num,value,kind){
+    checkNum(num,value,kind){
         switch(kind){
             //值必须为多少位
             case 1:
@@ -301,7 +319,7 @@ class Validate{
         }
     };
     //判断身份证是否合法
-    #validatorIDCard(idcode) {
+    validatorIDCard(idcode) {
         if (typeof idcode !== 'string') {
           return {
             code: -1,
@@ -342,7 +360,7 @@ class Validate{
         }
     };
     //替换字符串中#0#
-    #replaceStr(str,num){
+    replaceStr(str,num){
         let str1 = str
         let reg = /#0#/
         if(num instanceof Array){
@@ -356,10 +374,8 @@ class Validate{
     };
     //自定义规则
     customize(name,callback){
-        this.#saveCustomize.push(name)
+        this.saveCustomize.push(name)
         this[name] = callback
     };
 }
-
-module.exports.Validate = new Validate()
-
+module.exports = Validate  

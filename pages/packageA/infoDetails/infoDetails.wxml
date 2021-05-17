@@ -1,0 +1,45 @@
+<view class="page">
+    <!-- 头像 -->
+    <view class="header">
+        <view class="header_img" bindtap="getImage">
+            <cover-image wx:if="{{userInfo.avatarUrl}}" src="{{userInfo.avatarUrl}}"></cover-image>
+        </view>
+    </view>
+    <!-- 其他信息 -->
+    <view class="form_view">
+        <form action="" class="info_form">
+            <view class="info_form_element">
+                <text>昵称</text>
+                <input disabled name="nick_name" data-nature="nick_name" focus="{{states == 'nick_name' ? true:false}}" value="{{userInfo.nick_name==''?'无昵称':userInfo.nick_name}}"></input>
+            </view>
+            <view class="info_form_element">
+                <text>用户名</text>
+                <input disabled name="username" data-nature="username" focus="{{states == 'username' ? true:false}}" value="{{userInfo.username}}"></input>
+            </view>
+            <view class="info_form_element">
+                <text>手机</text>
+                <input disabled name="phone" data-nature="phone" value="{{userInfo.phone}}"></input>
+            </view>
+            <view class="info_form_element">
+                <text>地址</text>
+                <input name="address" data-nature="address" value="{{userInfo.province +'省'+ userInfo.city +'市'+ (userInfo.address == null ? '':userInfo.address)}}"></input>
+            </view>
+            <view class="info_form_element">
+                <text>性别</text>
+                <input name="gender" data-nature="gender" value="{{userInfo.gender == 0 ? '男':userInfo.gender == 1?'女':'未知'}}"></input>
+            </view>
+            <view class="info_form_element">
+                <text>生日</text>
+                <input name="bir" data-nature="bir" value="{{userInfo.bir}}"></input>
+            </view>
+            <view class="info_form_element_itrd">
+                <text>简介</text>
+                <textarea name="introduction" disabled="{{textareaAtate}}" bindtap="_e" data-nature="introduction" value="{{userInfo.introduction}}"></textarea>
+            </view>
+            <view class="info_form_element">
+                <text>密码</text>
+                <input name="pwd" disabled data-nature="pwd" bindtap="_e" value="{{userInfo.pwd == ''? '设置密码':'更改密码'}}"></input>
+            </view>
+        </form>
+    </view>
+</view>

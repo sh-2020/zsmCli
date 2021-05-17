@@ -1,0 +1,18 @@
+<view class="pages">
+    <block wx:if="{{input_hidden}}">
+        <view class="input_phone" style="position: absolute; left: 50%; margin-left: -250rpx; top: 250rpx">
+            <text class="iconfont icon-dianhua"></text>
+            <input class="input" value="{{input_value}}" bindinput="setInputValue"></input>
+            <text class="input_text" bindtap="sendUserInfo" >绑定手机号码</text>
+        </view>
+    </block>
+    <block wx:if="{{get_hiddem}}"> 
+        <view class="numbox" style="position: absolute; left: 50%; margin-left: -75rpx; top: 250rpx">
+            <button class="bunbox_button iconfont icon-dianhua" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>
+            <text class="button" style="position: absolute; width: 256rpx; height: 62rpx; display: block; box-sizing: border-box; left: -53rpx; top: 180rpx">点击获取手机号码</text>
+        </view>
+    </block>
+    <view class="goto" style="position: absolute; left: 324rpx; top: 578rpx" bindtap="showModel">
+        <text class="iconfont icon-xiangyoujiantou1"></text>
+    </view>
+</view>

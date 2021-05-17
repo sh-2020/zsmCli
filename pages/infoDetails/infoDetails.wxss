@@ -1,0 +1,56 @@
+.page{
+    width: 750rpx;
+    height: 1334rpx;
+    background-color: #eeeeee;
+}
+.header{
+    height: 350rpx;
+    background-color: #a4c9ff;
+    border: none;
+}
+.header_img{
+    position: absolute;
+    height: 200rpx;
+    width: 200rpx;
+    border: none;
+    background-color: white;
+    left: 50%;
+    margin-left: -100rpx;
+    margin-top: 75rpx;
+    border-radius: 10%;
+}
+.header_img >cover-image {
+    height: 100%;
+    width: 100%;
+}
+.form_view{
+    width: 750rpx;
+    height: 974rpx;
+    margin-top: 10rpx;
+    background-color: white;
+}
+.info_form{
+    width: 600rpx;
+    height: 974rpx;
+    position: absolute;
+    left: 75rpx;
+    top: 445rpx;
+    background-color: white;
+}
+.info_form_element{
+    height: 100rpx;
+    width: 600rpx;
+    display: flex;
+    line-height: 100rpx;
+}
+.info_form_element > text{
+    width: 150rpx;
+    font-size: 40rpx;
+    font-weight: 200;
+}
+.info_form_element > input {
+    margin-left: 20rpx;
+    height: 100rpx;
+    width: 450rpx;
+}
+

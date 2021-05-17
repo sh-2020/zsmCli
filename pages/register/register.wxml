@@ -9,26 +9,26 @@
             <form action="" class="register_form">
                 <view class="account">
                     <text class="font_1 iconfont icon-wode"></text>
-                    <input type="text" value="{{formDate.account}}"></input>
-                    <text class="font_2 iconfont {{register_state.account.icon_style}}" hidden="{{register_state.account.icon_show}}" ></text>
+                    <input type="text" data-inputName="username" name="username" value="{{formDate.username}}" bindblur="checkAccount" bindinput="bindInput"></input>
+                    <text class="font_2 iconfont {{register_state.username.icon_style}}" hidden="{{register_state.username.icon_show}}" ></text>
                 </view>
                 <view class="tel">
                     <text class="font_1 iconfont icon-dianhua"></text>
-                    <input type="text"></input>
-                    <text class="font_2 iconfont {{register_state.account.icon_style}}" hidden="{{register_state.account.icon_show}}"></text>
+                    <input type="text" data-inputName="phone" name="phone" value="{{formDate.phone}}" bindinput="bindInput" bindblur="checkResult"></input>
+                    <text class="font_2 iconfont {{register_state.phone.icon_style}}" hidden="{{register_state.phone.icon_show}}"></text>
                 </view>
                 <view class="pwd">
                     <text class="font_1 iconfont icon-denglumima"></text>
-                    <input type="text"></input>
-                    <text class="font_2 iconfont {{register_state.account.icon_style}}" hidden="{{register_state.account.icon_show}}"></text>
+                    <input password name="pwd" data-inputName="pwd" type="text" value="{{formDate.pwd}}" bindinput="bindInput" bindblur="checkResult"></input>
+                    <text class="font_2 iconfont {{register_state.pwd.icon_style}}" hidden="{{register_state.pwd.icon_show}}"></text>
                 </view>
                 <view class="newPwd">
                     <text class="font_1 iconfont icon-denglumima"></text>
-                    <input type="text"></input>
-                    <text class="font_2 iconfont {{register_state.account.icon_style}}" hidden="{{register_state.account.icon_show}}"></text>
+                    <input password name="newPwd" data-inputName="newPwd" type="text" value="{{formDate.newPwd}}" bindinput="bindInput" bindblur="checkResult"></input>
+                    <text class="font_2 iconfont {{register_state.newPwd.icon_style}}" hidden="{{register_state.newPwd.icon_show}}" ></text>
                 </view>
             </form>
-            <view class="go_register">
+            <view class="go_register" bindtap="sendUserRegisterInfo">
                 <text class="iconfont icon-xiangyoujiantou"></text>
             </view>
         </view>

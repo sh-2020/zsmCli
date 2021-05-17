@@ -1,0 +1,26 @@
+    <view>
+    <block wx:if="{{showHeader}}">
+        <view class="header" style="{{'position:'+(headerPosition)+';'+('top:'+(headerTop)+';')}}">
+        <view class="title">服务</view>
+        </view>
+    </block>
+        <view class="place"></view>
+    <view class="server-list">
+        <block wx:if="{{serverList.length==0}}">
+            <view class="tis">没有服务~</view>
+        </block>
+        <block wx:for="{{serverList}}" wx:for-item="row" wx:for-index="index" wx:key="index">
+            <view class="row">
+                <view class="img">
+                    <image src="{{row.img}}"></image>
+                </view>
+                <view class="serverName">
+                    <text>{{row.serverName}}</text>
+                </view>
+                <view class="introduction">
+                    <text>{{row.introduction}}</text>
+                </view>
+            </view>
+        </block>
+    </view>
+    </view>

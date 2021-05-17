@@ -53,8 +53,9 @@
 }
 
 .login_form view input {
+    height: 100rpx;
     position: relative;
-    top: -58rpx;
+    top: -100rpx;
     box-sizing: border-box;
     padding-left: 100rpx;
     font-size: 40rpx;
@@ -78,4 +79,7 @@
 .wx_login_button image {
     height: 100%;
     width: 100%;
+}
+.regeister{
+    top: -20%;
 }

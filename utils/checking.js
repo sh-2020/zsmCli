@@ -1,6 +1,0 @@
-class Checking {
-    constructor(params) {
-        
-    }
-
-}

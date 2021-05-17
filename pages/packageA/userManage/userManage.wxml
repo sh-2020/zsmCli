@@ -1,0 +1,43 @@
+<view class="page">
+    <!-- 头部 -->
+    <view class="header">
+        <view class="header_search">
+            <input class="search_ipt" value="{{searchData}}" bindfocus="onfocus" bindinput="onInput"></input>
+            <button class="search_btn iconfont icon-sousuo" bindtap="sendSearch"></button>
+        </view>
+        <view class="header_button" wx:if="{{is_show}}" bindtap="addUser">
+            <text class="iconfont icon-jiahao"></text>
+        </view>
+        <view class="header_button" wx:if="{{is_show}}" bindtap="changeSort">
+            <text class="iconfont {{(sorting?'icon-shangjiantouxiangshangxianxing':'icon-shangjiantouxiangshangxianxing1')}}"></text>
+        </view>
+    </view>
+    <view class="body">
+        <block wx:for="{{userList}}" wx:for-item="childs" wx:key="index">
+            <view class="child" style="background-color: {{childs.color}}" data-cid="{{childs.id}}" bindtap="checkTheManageDetails">
+                <view class="child_img">
+                    <cover-image wx:if="{{childs.avatarUrl}}" src="{{childs.avatarUrl}}"></cover-image>
+                </view>
+                <view class="child_info">
+                    <text>{{childs.nick_name}} \n</text>
+                    <text>{{childs.username}} \n</text>
+                    <text>{{childs.phone}} \n</text>
+                    <text>{{childs.province}}省{{childs.city}}市{{childs.address}}</text>
+                </view>
+                <!-- <view class="detailed">
+                    <text class="iconfont icon-biezhen1-copy"></text>
+                </view> -->
+            </view>
+        </block>
+        <view class="buttom" wx:if="{{is_show_NOUSER}}">
+            <text>没有更多了...</text>
+        </view>
+    </view>
+</view>
+<view class="class_button" style="position: absolute; height: 72rpx; width: 78rpx; left: 42rpx; top: 50rpx; display: block; box-sizing: border-box" wx:if="{{is_show_close}}" bindtap="close_">
+    <text class="iconfont icon-jiahao" style="font-size: 60rpx; color: black"></text>
+</view>
+<view class="cloth" wx:if="{{is_show_cloth}}"></view>
+<!-- <view class="cloth"></view> -->
+<view-addUser class="addUser" bindmyevent="addEvent" addType="user" wx:if="{{is_show_add}}"></view-addUser>
+<!-- <view-addUser class="addUser"></view-addUser> -->

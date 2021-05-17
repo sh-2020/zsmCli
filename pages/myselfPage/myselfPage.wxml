@@ -1,0 +1,45 @@
+<view class="close" style="position: absolute; left: 24rpx; top: 36rpx; width: 94rpx; height: 86rpx; display: block; box-sizing: border-box" bindtap="outPage">
+    <text>返回</text>
+</view>
+<view class="body" style="min-height:{{pageHight}}px" hidden="{{is_show}}">
+    <view class="header">   
+        <view class="header_img" data-userInfo="img" bindtap="setUserInfo">
+            <cover-image wx:if="{{avatarUrl}}" src="{{avatarUrl}}"></cover-image>
+        </view>
+        <view class="header_main">
+            <view class="name" data-userInfo="nick_name" bindtap="setUserInfo">
+                <text>{{nick_name}}</text>
+            </view>
+            <view class="account" data-userInfo="username" bindtap="setUserInfo">
+                <text>账号：</text>
+                <text>{{username}}</text>
+            </view>
+        </view>
+        <view class="header_arrowhead" data-userInfo="" bindtap="setUserInfo">
+            <text class="iconfont icon-xiangyoujiantou1"></text>
+        </view>
+    </view>
+    <view class="ability_area">
+        <block wx:for="{{abilityList}}" wx:for-item="ability" wx:key="index">
+            <view class="ability_child" style="width:{{abilityWidth}}rpx" data-ability="{{ability.limit_id}}" bindtap="showAbilityComponents"> 
+                <text class="iconfont {{ability.icon}}"></text>
+                <text>{{ability.name}}</text>
+            </view>
+        </block>
+    </view>
+    <view class="other_ability">
+        <block wx:for="{{otherAbilityList}}" wx:for-item="nape" wx:key="index">
+            <view class="other_child" data-otherability="{{nape.id}}">
+                <view class="other_image">
+                    <image src="{{nape.icon}}"></image>
+                </view>
+                <view class="other_text">
+                    <text>{{nape.designation}}</text>
+                    <text class="iconfont icon-xiangyoujiantou1"></text>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>
+<view_setUserInfo wx:if="{{is_show_setUserInfo}}" states="{{setDataValue}}"></view_setUserInfo>
+
