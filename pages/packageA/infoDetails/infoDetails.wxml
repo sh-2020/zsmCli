@@ -34,12 +34,26 @@
             </view>
             <view class="info_form_element_itrd">
                 <text>简介</text>
-                <textarea name="introduction" disabled="{{textareaAtate}}" bindtap="_e" data-nature="introduction" value="{{userInfo.introduction}}"></textarea>
+                <textarea name="introduction" disabled="{{textareaAtate}}" bindblur="ModifyTheProfile" bindtap="_e" data-nature="introduction" value="{{userInfo.introduction}}"></textarea>
             </view>
             <view class="info_form_element">
                 <text>密码</text>
                 <input name="pwd" disabled data-nature="pwd" bindtap="_e" value="{{userInfo.pwd == ''? '设置密码':'更改密码'}}"></input>
             </view>
         </form>
+    </view>
+    <view class="changePassword" wx:if="{{is_show_pwd}}" style="position: absolute; left: 75rpx; top: 200rpx">
+        <view class="changePassword_element">
+            <input name="pwd" type="text" bindblur="savePwd"></input>
+        </view>
+        <view class="changePassword_element">
+            <input name="newPwd" type="text" bindinput="saveNewPwd"></input>
+        </view>
+        <view class="changePassword_element">
+            <button bindtap="sendInfo">确定</button>
+        </view>
+    </view>
+    <view class="close" style="height: 80rpx; width: 80rpx; position: absolute; left: 40rpx; top: 168rpx; display: block; box-sizing: border-box" bindtap="close__" wx:if="{{close_but}}">
+        <text class="iconfont icon-jiahao-copy">关闭</text>
     </view>
 </view>

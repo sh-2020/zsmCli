@@ -229,6 +229,7 @@ Page({
     async getCorrespondingId(id){
         try {
             const MsgGainResult = await wrequest({method:'GET',url:'/getUserInfoFromID',data:{cid:id}});
+            MsgGainResult.data.data['id'] = id;
             //获取信息成功则跳转至页面，并将数据发送过去
             if(MsgGainResult.statusCode == 200 && MsgGainResult.data.status == 'yes'){
                 wx.navigateTo({

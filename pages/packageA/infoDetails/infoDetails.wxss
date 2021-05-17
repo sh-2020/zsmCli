@@ -73,4 +73,34 @@
     height: 100rpx;
     width: 450rpx;
 }
+.changePassword {
+    z-index: 99;
+    position: absolute;
+    top: 200rpx;
+    left: 75rpx;
+    height: 700rpx;
+    width: 600rpx;
+    background-color:#ffe7ba;
+}
+.changePassword_element {
+    box-sizing: content-box;
+    height: 100rpx;
+    width: 600rpx;
+    margin-top: 50rpx;
+    
+}
+.changePassword_element > input {
+    box-sizing: border-box;
+    height: 100rpx;
+    width: 540rpx;
+    margin-left: 30rpx;
+    line-height: 100rpx;
+    border: solid 2rpx #ff7a45;
+    border-radius: 20rpx;
+    padding-left: 20rpx;
+}
+.close{
+    z-index: 9999;
+}
+
 
