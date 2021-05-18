@@ -82,6 +82,7 @@
     left: 5rpx;
 }
 .child {
+    position: relative;
     height: 350rpx;
     width: 650rpx;
     background-color: white;
@@ -165,4 +166,19 @@
     top: 10rpx;
     left: 10rpx;
     position: absolute;
+}
+.delUser {
+    position: absolute;
+    width: 180rpx; 
+    height: 66rpx; 
+    display: block; 
+    box-sizing: border-box; 
+    left: 500rpx; 
+    top: 30rpx;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-left: 10rpx;
+    padding-right: 10rpx;
+    line-height: 66rpx;
+    border-radius: 5rpx;
 }

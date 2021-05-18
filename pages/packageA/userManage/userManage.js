@@ -1,5 +1,6 @@
 const App = getApp()
-import {wrequest} from "../../../utils/request"
+import {wrequest} from "../../../utils/request";
+import {showModal,remove} from "../../../utils/util"
 const colorList = ["#d9d9d9","#ffc069","#d3f261","#40a9ff","#b37feb","#ffadd2","#bae7ff","#95de64","#d9f7be","#fff566","#ffccc7","#85a5ff","#efdbff","#f5f5f5"]
 //初始加载开始位置id
 let nextId = 0;
@@ -28,6 +29,7 @@ Page({
         is_show_add:false,
         is_show_close:false,
         searchData:"请输入昵称，电话号码，账号",
+        cid:0
     },
     /**
      * 当搜索框获取焦点时清除初始内容
@@ -260,6 +262,38 @@ Page({
               icon:"none"
             })
             console.log(error);
+        }
+    },
+    delUser(event){ 
+        
+        this.setData({
+            cid:event.currentTarget.dataset.cid
+        })
+    },
+    goToDetail(){
+        this.getCorrespondingId(this.data.cid);
+    },
+    async ConfirmtheDeletion(){
+        try {
+            let ConfirmRes = await showModal({content:'确认删除改用户',showCancel:true});
+            if(!ConfirmRes.value){
+                this.setData({
+                    cid:0,
+                })
+            }
+            let deleteRes = await wrequest({method:'GET',url:'/deleteUser',data:{id:this.data.cid}});
+            console.log(deleteRes)
+            if(deleteRes.data.code == 1){
+                let arr =  remove(this.data.userList,this.data.cid);
+                this.setData({
+                    userList:arr,
+                    cid:0
+                })
+            }
+            wx.showToast({title: deleteRes.data.msg,icon:"none"})
+        } catch (error) {
+            wx.showToast({title: '系统错误',icon:"none"})
+            console.log(error)   
         }
     }
 })

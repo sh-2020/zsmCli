@@ -1,4 +1,5 @@
 // app.js
+
 App({
   globalData: {
     userInfo: null,
@@ -6,5 +7,6 @@ App({
     token:"",
     openid:""
   },
+ 
 })
 

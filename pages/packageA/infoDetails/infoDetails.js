@@ -24,7 +24,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
      onLoad: async function (options) {
-        console.log(JSON.parse(options.userInfoObject));
+        // console.log(JSON.parse(options.userInfoObject));
         //发起请求，获取数据
         this.setData({
             userInfo:JSON.parse(options.userInfoObject)

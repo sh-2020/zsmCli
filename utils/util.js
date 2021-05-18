@@ -82,9 +82,28 @@ function translate(data,lfrom,lto){
   })
 }
 
+function arrayIndex(arr,val){
+  for(let i=0;i<arr.length;i++){
+    if(arr[i].id === val){
+      return i;
+    }
+  }
+  return -1;
+}
+
+function remove(arr,val){
+  let index = arrayIndex(arr,val);
+  if(index>-1){
+    arr.splice(index,1);
+  }
+  return arr;
+}
+
 module.exports = {
   formatTime,
   showModal,
   judgeWhetherLogin,
-  translate
+  translate,
+  arrayIndex,
+  remove
 }
